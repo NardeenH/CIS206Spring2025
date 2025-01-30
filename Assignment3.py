@@ -58,7 +58,7 @@ def calculate_bmi():
     print(Fore.BLUE + f"Your category is: {category}")
     print(Fore.BLACK + "=" * 20)
 
-while True:
+while True:  # i added this just for fun.
     calculate_bmi()
     again = input(Fore.CYAN + "Would you like to calculate another BMI? (yes/no): ").strip().lower()
     if again != 'yes':

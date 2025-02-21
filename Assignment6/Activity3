@@ -1,0 +1,67 @@
+# Enhanced RLE with Escape Sequences
+
+def encode_rle(input_string):
+    encoded_string = ""
+    count = 1
+
+    i = 0
+    while i < len(input_string):
+        if input_string[i].isdigit():
+            encoded_string += f"##{input_string[i]}"
+            i += 1
+            continue
+        
+        char = input_string[i]
+        count = 1
+        i += 1
+
+        while i < len(input_string) and input_string[i] == char:
+            count += 1
+            i += 1
+        
+        if count == 1:
+            encoded_string += char
+        else:
+            encoded_string += f"{char}{count}"
+    
+    return encoded_string
+
+def decode_rle(encoded_string):
+    decoded_string = ""
+    i = 0
+
+    while i < len(encoded_string):
+        if encoded_string[i:i + 2] == "##":
+            decoded_string += encoded_string[i + 2]
+            i += 3
+            continue
+
+        char = encoded_string[i]
+        count = 1
+        i += 1
+
+        if i < len(encoded_string) and encoded_string[i].isdigit():
+            count = 0
+            while i < len(encoded_string) and encoded_string[i].isdigit():
+                count = count * 10 + int(encoded_string[i])
+                i += 1
+        
+        decoded_string += char * count
+    
+    return decoded_string
+
+def main():
+    input_string = input("Enter a string: ")
+    if input_string.startswith("##00"):
+        input_string = input_string[4:]
+        try:
+            decoded_string = decode_rle(input_string)
+            print("Decoded string:", decoded_string)
+        except ValueError as e:
+            print(e)
+    else:
+        encoded_string = encode_rle(input_string)
+        print("Encoded string:", encoded_string)
+
+if __name__ == "__main__":
+    main()

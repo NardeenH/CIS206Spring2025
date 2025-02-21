@@ -1,0 +1,31 @@
+# Run-Length Encoding (RLE) Function
+
+def run_length_encoding(input_string):
+
+    if not input_string.isalpha():
+        raise ValueError("Input string must contain only alphabetic characters.")
+    
+    result = []
+    count = 1
+
+    for i in range(1, len(input_string)):
+        if input_string[i] == input_string[i - 1]:
+            count += 1
+        else:
+            result.append(input_string[i - 1] + (str(count) if count > 1 else ''))
+            count = 1
+    
+    result.append(input_string[-1] + (str(count) if count > 1 else ''))
+    
+    return ''.join(result)
+
+def main():
+    input_string = input("Enter a string to encode: ")
+    try:
+        encoded_str = run_length_encoding(input_string)
+        print(f"Encoded string: {encoded_str}")
+    except ValueError as e:
+        print(e)
+    
+if __name__ == "__main__":
+    main()

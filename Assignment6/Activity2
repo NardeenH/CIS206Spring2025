@@ -1,0 +1,59 @@
+#RLE Encoding/Decoding
+
+def encode_rle(input_string):
+    if not input_string.isalpha():
+        raise ValueError("Input string must only contain alphabetic characters.")
+
+    encoded_string = ""
+    count = 1
+
+    for i in range(1, len(input_string)):
+        if input_string[i] == input_string[i - 1]:
+            count += 1
+        else:
+            encoded_string += input_string[i - 1] + (str(count) if count > 1 else "")
+            count = 1
+
+    encoded_string += input_string[-1] + (str(count) if count > 1 else "")
+    return encoded_string
+
+def decode_rle(encoded_string):
+    if not encoded_string:
+        raise ValueError("Encoded string cannot be empty.")
+    
+    decoded_string = ""
+    count = ""
+
+    for char in encoded_string:
+        if char.isalpha():
+            if count:
+                decoded_string += decoded_string[-1] * (int(count) - 1)
+                count = ""
+            decoded_string += char
+        elif char.isdigit():
+            count += char
+        else:
+            raise ValueError("Invalid character in encoded string.")
+    
+    if count:
+        decoded_string += decoded_string[-1] * (int(count) - 1)
+    
+    return decoded_string
+
+def main():
+    input_string = input("Enter a string: ")
+    if any(char.isdigit() for char in input_string):
+        try:
+            decoded_string = decode_rle(input_string)
+            print("Decoded string:", decoded_string)
+        except ValueError as e:
+            print(e)
+    else:
+        try:
+            encoded_string = encode_rle(input_string)
+            print("Encoded string:", encoded_string)
+        except ValueError as e:
+            print(e)
+
+if __name__ == "__main__":
+    main()

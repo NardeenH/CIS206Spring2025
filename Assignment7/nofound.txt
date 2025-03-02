@@ -1,0 +1,19 @@
+Saly
+Huseyin
+Saly
+Sally
+Sally
+Sue
+& C:/Users/narde/AppData/Local/Microsoft/WindowsApps/python3.12.exe c:/Users/narde/OneDrive/Desktop/CIS206/Assignment7/file.py
+Sally
+Sally
+sally
+Sally
+Sue
+Sally
+Sally
+sally
+sally
+sally
+& c:/users/narde/appdata/local/microsoft/windowsapps/python3.12.exe c:/users/narde/onedrive/desktop/cis206/assignment7/file.py
+& c:/users/narde/appdata/local/microsoft/windowsapps/python3.12.exe c:/users/narde/onedrive/desktop/cis206/assignment7/file.py

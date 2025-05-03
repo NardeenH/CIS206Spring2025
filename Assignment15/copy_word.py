@@ -1,3 +1,5 @@
+# Race against the clock to type words accurately.
+
 import tkinter as tk
 import random
 
